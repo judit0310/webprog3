@@ -22,6 +22,27 @@ public class Kocsi {
     private Collection<Allapot> allapot;
     private int teljesitmeny;
 
+    public Kocsi() {
+    }
+
+    @Override
+    public String toString() {
+        return "Kocsi{" +
+                "evjarat=" + evjarat +
+                ", hengerurtartalom=" + hengerurtartalom +
+                ", rendszam='" + rendszam + '\'' +
+                ", marka='" + marka + '\'' +
+                ", tipus='" + tipus + '\'' +
+                ", kivitel=" + kivitel +
+                ", muszaki_ervenyesseg=" + muszaki_ervenyesseg +
+                ", uzemanyag=" + uzemanyag +
+                ", szin_hexakod='" + szin_hexakod + '\'' +
+                ", szinezes=" + szinezes +
+                ", ajtok_szama=" + ajtok_szama +
+                ", allapot=" + allapot +
+                ", teljesitmeny=" + teljesitmeny +
+                '}';
+    }
 
     public int getEvjarat() {
         return evjarat;

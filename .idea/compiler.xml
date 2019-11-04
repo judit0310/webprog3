@@ -8,10 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="model" />
         <module name="web" />
+        <module name="daojson" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
-      <module name="web" target="8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>
