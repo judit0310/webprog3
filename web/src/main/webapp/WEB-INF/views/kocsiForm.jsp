@@ -19,6 +19,39 @@
     <form:label path="rendszam">Rendszam</form:label>
     <form:input path="rendszam"/>
     <br>
+    <form:label path="marka">Márka</form:label>
+    <form:input path="marka"/>
+    <br>
+    <form:label path="tipus">Tipus</form:label>
+    <form:input path="tipus"/>
+    <br>
+    <form:label path="ajtok_szama">Ajtók Száma</form:label>
+    <form:input path="ajtok_szama" />
+    <br>
+    <form:label path="evjarat">Évjárat</form:label>
+    <form:input path="evjarat"/>
+    <br>
+    <form:label path="hengerurtartalom">Hengerűrtartalom</form:label>
+    <form:input path="hengerurtartalom"/>
+    <br>
+    <form:label path="muszaki_ervenyesseg">Műszaki érvényesség</form:label>
+    <form:input type="date" path="muszaki_ervenyesseg"/>
+    <br>
+    <form:label path="szin_hexakod">Szín hexa kódban megadva</form:label>
+    <form:input path="szin_hexakod"/>
+    <br>
+    <form:label path="teljesitmeny">Teljesítmény</form:label>
+    <form:input path="teljesitmeny"/>
+    <br>
+    <form:label path="kivitel">Kivitel</form:label>
+    <form:select path="kivitel">
+        <form:options items="${kivitelTipusok}"/>
+    </form:select>
+    <br>
+    <form:label path="allapot">Állapot</form:label>
+    <form:select path="allapot" multiple="true">
+        <form:options items="${allapotTipusok}"/>
+    </form:select>
     <input type="submit" value="Küldés">
 </form:form>
 

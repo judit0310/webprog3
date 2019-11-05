@@ -1,3 +1,4 @@
+package dao;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -34,9 +35,24 @@ public class DAOJSON {
     }
 
     public void addKocsi(Kocsi kocsi) throws IOException {
-        Collection<Kocsi> cars = readAllKocsi();
-        cars.add(kocsi);
-        mapper.writeValue(file, cars);
+        try {
+            readKocsiByRendszam(kocsi.getRendszam());
+        } catch (KocsiNemTalalhato kocsiNemTalalhato) {
+            Collection<Kocsi> cars = readAllKocsi();
+            cars.add(kocsi);
+            mapper.writeValue(file, cars);
+        }
         return;
+    }
+
+    public Kocsi readKocsiByRendszam(String rendszam) throws IOException,
+            KocsiNemTalalhato {
+        Collection<Kocsi> cars = readAllKocsi();
+        for(Kocsi k: cars){
+            if(k.getRendszam().equalsIgnoreCase(rendszam)){
+                return k;
+            }
+        }
+        throw new KocsiNemTalalhato();
     }
 }

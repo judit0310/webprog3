@@ -19,6 +19,9 @@
         <property name="suffix" value=".jsp"/>
 
     </bean>
+    <bean class="dao.DAOJSON">
+        <constructor-arg name="filepath" value="autodb.json"/>
+    </bean>
 
 
 </beans>

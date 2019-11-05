@@ -1,5 +1,6 @@
 package webprog.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import webprog.exceptions.InvalidEvjarat;
 import webprog.exceptions.InvalidRendszam;
 import webprog.exceptions.InvalidSzinKod;
@@ -14,6 +15,7 @@ public class Kocsi {
     private String marka;
     private String tipus;
     private Kivitel kivitel;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate muszaki_ervenyesseg;
     private Uzemanyag uzemanyag;
     private String szin_hexakod;
@@ -68,9 +70,9 @@ public class Kocsi {
     }
 
     public void setRendszam(String rendszam) throws InvalidRendszam {
-        if(rendszam.matches("^[A-z]-\\d\\d\\d$")){
-        this.rendszam = rendszam;}
-        else{
+        if (rendszam.matches("^[A-z]{3}-\\d\\d\\d$")) {
+            this.rendszam = rendszam;
+        } else {
             throw new InvalidRendszam(rendszam);
         }
     }
@@ -103,7 +105,7 @@ public class Kocsi {
         return muszaki_ervenyesseg;
     }
 
-    public void setMuszaki_ervenyesseg(LocalDate muszaki_ervenyesseg) {
+    public void setMuszaki_ervenyesseg(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate muszaki_ervenyesseg) {
         this.muszaki_ervenyesseg = muszaki_ervenyesseg;
     }
 
@@ -120,10 +122,9 @@ public class Kocsi {
     }
 
     public void setSzin_hexakod(String szin_hexakod) throws InvalidSzinKod {
-        if(szin_hexakod.matches("^#([A-F]|[a-f]|\\d){6}$")){
+        if (szin_hexakod.matches("^#([A-F]|[a-f]|\\d){6}$")) {
             this.szin_hexakod = szin_hexakod;
-        }
-        else{
+        } else {
             throw new InvalidSzinKod();
         }
 
@@ -168,12 +169,13 @@ public class Kocsi {
 
     public Kocsi(int evjarat, double hengerurtartalom, String rendszam, String marka, String tipus, Kivitel kivitel, LocalDate muszaki_ervenyesseg, Uzemanyag uzemanyag, String szin_hexakod, Szinezes szinezes, int ajtok_szama, Collection<Allapot> allapot, int teljesitmeny) throws InvalidRendszam, InvalidSzinKod, InvalidEvjarat {
         setEvjarat(evjarat);
+        System.out.println("CONSTRUTROC VAGYOk");
         this.hengerurtartalom = hengerurtartalom;
         setRendszam(rendszam);
         this.marka = marka;
         this.tipus = tipus;
         this.kivitel = kivitel;
-        this.muszaki_ervenyesseg = muszaki_ervenyesseg;
+        setMuszaki_ervenyesseg(muszaki_ervenyesseg);
         this.uzemanyag = uzemanyag;
         setSzin_hexakod(szin_hexakod);
         this.szinezes = szinezes;
