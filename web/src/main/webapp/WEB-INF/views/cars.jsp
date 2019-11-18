@@ -21,7 +21,9 @@
 <table frame="border" width="250" rules="all">
     <c:forEach items="${cars}" var="auto">
         <tr>
-          <td> <a href="${pageContext.servletContext.contextPath}/auto/${auto.rendszam}">${auto.rendszam}</a></td>
+          <td> <a href="${pageContext.servletContext.contextPath}/auto/${auto.rendszam}">
+                  ${auto.rendszam}</a>
+           </td>
             <td>${auto.marka}</td>
             <td>${auto.tipus}</td>
             <td>${auto.evjarat}</td>

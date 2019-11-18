@@ -14,6 +14,8 @@
     <title>Kocsi hozzaadasa</title>
 </head>
 <body>
+
+${message}
 <h2>Kocsi adatai:</h2>
 <form:form method="post" action="addKocsi">
     <form:label path="rendszam">Rendszam</form:label>
