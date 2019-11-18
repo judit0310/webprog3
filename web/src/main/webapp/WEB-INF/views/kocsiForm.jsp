@@ -54,6 +54,9 @@
     </form:select>
     <input type="submit" value="Küldés">
 </form:form>
+<form action="${pageContext.servletContext.contextPath}/">
+    <input type="submit" value="Mégse">
+</form>
 
 </body>
 </html>

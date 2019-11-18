@@ -2,9 +2,11 @@ package auto;
 
 
 import dao.DAOJSON;
+import dao.KocsiNemTalalhato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +36,13 @@ public class AutoController{
         return "proba";
     }
 
+    @RequestMapping(value = "/autok")
+    public ModelAndView listAutos() throws IOException {
+        ModelAndView mav  = new ModelAndView("cars");
+        mav.addObject("cars",dao.readAllKocsi());
+        return mav;
+    }
+
     @RequestMapping(value = "/addKocsi", method = RequestMethod.GET)
     public ModelAndView addAutoForm(){
         ModelAndView mav = new ModelAndView("kocsiForm", "command",new Kocsi());
@@ -46,6 +55,13 @@ public class AutoController{
     public String addAuto(@ModelAttribute Kocsi kocsi) throws IOException {
         System.out.println(kocsi);
         dao.addKocsi(kocsi);
-        return "index";
+        return "cars";
+    }
+
+    @RequestMapping(value = "/auto/{rendszam}")
+    public ModelAndView getAutoByRendszam(@PathVariable String rendszam) throws IOException, KocsiNemTalalhato {
+        ModelAndView mav = new ModelAndView("carDetails");
+        mav.addObject("auto", dao.readKocsiByRendszam(rendszam));
+        return mav;
     }
 }
